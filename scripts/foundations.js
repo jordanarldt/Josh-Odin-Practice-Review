@@ -43,6 +43,36 @@ console.log("1 + 7 is " + add7(1))
 console.log("2 * 3 is " + multiply(2,3))
 console.log("Uppercase 'hello' is " + capitalize("hello"))
 console.log("And the last letter of 'hello' is " + lastLetter("hello"))
-
+/*
 let answer = parseInt(prompt("Please enter the number you would like to FizzBuzz up to: "));
 fizzBuzz(answer)
+*/
+const container = document.querySelector('#container')
+
+const firstParagraph = document.createElement('p')
+firstParagraph.style.color = 'red'
+firstParagraph.textContent = "Hello. I'm red."
+container.appendChild(firstParagraph)
+
+const firstH3 = document.createElement('h3')
+firstH3.style.color = 'blue'
+firstH3.textContent = "Hello. I'm a blue H3."
+container.appendChild(firstH3)
+
+const innerContainer = document.createElement('div')
+innerContainer.style['background-color'] = 'pink'
+innerContainer.style['border-color'] = 'black'
+innerContainer.style['border-style'] = 'solid'
+innerContainer.style['border-weight'] = '2px'
+    const innerH1 = document.createElement('h1')
+    innerH1.textContent = "I'm in a div!"
+    const innerParagraph = document.createElement('p')
+    innerParagraph.textContent = "Me too!"
+innerContainer.appendChild(innerH1)
+innerContainer.appendChild(innerParagraph)
+container.appendChild(innerContainer)
+
+const buttons = document.querySelectorAll('button')
+buttons.forEach(button => {
+    button.addEventListener('click', () => console.log(button.id))
+})
