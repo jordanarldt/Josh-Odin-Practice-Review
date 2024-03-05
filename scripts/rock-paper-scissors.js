@@ -12,16 +12,16 @@ function getComputerChoice(range=3) {
     }
 }
 
-function gameResultString(winner = 0, player1Choice, player2Choice) {
+function gameResultString(winner = 2, player1Choice, player2Choice) {
     switch (winner) {
+        case -1:
+            return {result:-1, message:`You Tied! ${player1Choice} is ${player2Choice}!`}
         case 0:
-            return `You Tied! ${player1Choice} is ${player2Choice}!`
+            return {result:0, message:`You Win! ${player1Choice} beats ${player2Choice}!`}
         case 1:
-            return `You Win! ${player1Choice} beats ${player2Choice}!`
-        case 2:
-            return `You Lose! ${player2Choice} beats ${player1Choice}!`
+            return {result:1, message:`You Lose! ${player2Choice} beats ${player1Choice}!`}
         default:
-            return `You Broke Something! I don't know how ${player1Choice} interacts with ${player2Choice}!`
+            return {result:-1, message:`You Broke Something! I don't know how ${player1Choice} interacts with ${player2Choice}!`}
     }
 }
 
@@ -31,34 +31,34 @@ function playRound(player1Choice, player2Choice) {
 
     // Take care of Ties early
     if(opps[0] == opps[1]) {
-        return gameResultString(0, player1Choice, player2Choice)
+        return gameResultString(-1, player1Choice, player2Choice)
     }
 
     // Game logic
     switch (opps[0]) {
         case "rock":
             if(opps[1] == "paper") {
-                return gameResultString(2, player1Choice, player2Choice)
+                return gameResultString(1, player1Choice, player2Choice)
             }
             else if(opps[1] == "scissors") {
-                return gameResultString(1, player1Choice, player2Choice)
+                return gameResultString(0, player1Choice, player2Choice)
             }
         case "paper":
             if(opps[1] == "scissors") {
-                return gameResultString(2, player1Choice, player2Choice)
+                return gameResultString(1, player1Choice, player2Choice)
             }
             else if(opps[1] == "rock") {
-                return gameResultString(1, player1Choice, player2Choice)
+                return gameResultString(0, player1Choice, player2Choice)
             }
         case "scissors":
             if(opps[1] == "rock") {
-                return gameResultString(2, player1Choice, player2Choice)
-            }
-            else if(opps[1] == "paper") {
                 return gameResultString(1, player1Choice, player2Choice)
             }
+            else if(opps[1] == "paper") {
+                return gameResultString(0, player1Choice, player2Choice)
+            }
         default:
-            return gameResultString(3, player1Choice, player2Choice)
+            return gameResultString(player1Choice, player2Choice)
     }
 }
 
@@ -90,3 +90,25 @@ function playGame(goal = 3) {
     }
     console.log(`${player1Wins} to ${player2Wins}`)
 }
+
+const gameOutPut = document.querySelector('#gameOutPut')
+function writeGameOut(gameInfo) {
+    let output = document.createElement('p')
+    output.textContent = gameInfo.message
+    if (gameInfo.result == 0) {
+        output.classList.add('win')
+    }
+    else if (gameInfo.result == 1) {
+        output.classList.add('lose')
+    }
+    return output
+}
+
+const playerChoices = document.querySelectorAll('button')
+playerChoices.forEach(button => {
+    button.addEventListener('click', () => {
+        let gameInfo = playRound(button.id, 'Rock')
+        let gamePackage = writeGameOut(gameInfo)
+        gameOutPut.appendChild(gamePackage)
+    })
+})
