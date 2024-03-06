@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+  <div style="display:flex">
+    <div style="flex:1">
+      <h1>Rock, Paper, Scissors!</h1>
+      <label for="user-input">Enter your choice (rock, paper, scissors): </label>
+      <input id="user-input" type="text" />
+      <button id="submit-move-btn">Go!</button>
+    </div>
+    <div style="flex:1">
+      <h2>Scores</h2>
+      <div>Player: <span id="player-score">0</span></div>
+      <div>Computer: <span id="computer-score">0</span></div>
+    </div>
+  </div>
+  <hr style="margin:1rem 0" />
+  <h2>Game logs</h2>
+  <div id="game-logs"></div>
+  <script src="./scripts/rock-paper-scissors-refactored.js"></script>
+</body>
+
+</html>
