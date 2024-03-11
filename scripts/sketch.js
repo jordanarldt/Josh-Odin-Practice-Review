@@ -2,16 +2,22 @@ function handleHoverSquare(element, color = "darkgreen") {
     element.style.backgroundColor = color
 }
 
-function handleSubmitBoardSize() {
+function handleSubmitBoardSize(bdColor="darkgreen", bgColor="forestgreen") {
     const size = parseInt(document.querySelector("#userInput").value)
     const board = document.querySelector(".board")
     while(board.firstChild){
         board.removeChild(board.firstChild)
     }
-    size > 100 ? drawGrid(100, 100) : drawGrid(size, size)
+    if (isNaN(size) || size <= 0) {
+        drawGrid(16, 16, bdColor, bgColor)
+    } else if (size > 100) {
+        drawGrid(100, 100, bdColor, bgColor)
+    } else {
+        drawGrid(size, size, bdColor, bgColor)
+    }
 }
 
-function drawGrid(x, y) {
+function drawGrid(x, y, bdColor="darkgreen", bgColor="forestgreen") {
     const board = document.querySelector(".board")
     for(let i = 0; i < y; i++) {
         const row = document.createElement("div")
@@ -21,6 +27,8 @@ function drawGrid(x, y) {
         for(let j = 0; j < x; j++) {
             const square = document.createElement("div")
             square.classList.add("square")
+            square.style.borderColor = bdColor
+            square.style.backgroundColor = bgColor
             square.id = "square-" + j + "-" + i
             square.addEventListener("mouseover", () => handleHoverSquare(square))
             console.log(square.id)
