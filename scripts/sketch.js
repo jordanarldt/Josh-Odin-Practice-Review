@@ -1,5 +1,21 @@
+let randomColors = false
+
+function generateRandomColor(){
+    let maxVal = 0xFFFFFF;
+    let randomNumber = Math.random() * maxVal; 
+    randomNumber = Math.floor(randomNumber);
+    randomNumber = randomNumber.toString(16);
+    let randColor = randomNumber.padStart(6, 0);   
+    return `#${randColor.toUpperCase()}`
+}
+
 function handleHoverSquare(element, color = "darkgreen") {
-    element.style.backgroundColor = color
+    if(randomColors) {
+        element.style.backgroundColor = generateRandomColor()
+    } else {
+        element.style.backgroundColor = color
+    }
+
 }
 
 function handleSubmitBoardSize(bdColor="darkgreen", bgColor="forestgreen") {
@@ -42,3 +58,8 @@ document.addEventListener("DOMContentLoaded", drawGrid(16,16));
 
 const submitBoardSize = document.querySelector("#submitBoardSize")
 submitBoardSize.addEventListener("click", () => handleSubmitBoardSize())
+
+const submitRandomColors = document.querySelector("#submitRandomColors")
+submitRandomColors.addEventListener("click", () => {
+    randomColors = !randomColors
+})
