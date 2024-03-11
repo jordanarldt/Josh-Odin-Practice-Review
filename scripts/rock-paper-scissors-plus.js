@@ -150,4 +150,4 @@ function logResultsToDOM(resultArray) {
 
 submitNumberRounds.addEventListener("click", () => startGame());
 submitUnlimitedRounds.addEventListener("click", () => startGame(Infinity));
-playerChoices.forEach(button => button.addEventListener("click", () => logResultsToDOM(playRound(button.id, "Rock"))));
+playerChoices.forEach(button => button.addEventListener("click", () => logResultsToDOM(playRound(button.id, getComputerChoice()))));
