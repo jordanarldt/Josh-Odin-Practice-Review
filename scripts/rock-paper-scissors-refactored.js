@@ -16,7 +16,7 @@ const choiceCount = Object.keys(choices).length;
 
 function playRound(playerInput) {
   const playerChoice = playerInput.toLowerCase();
-  
+
   if (!choices[playerChoice]) {
     addGameLog(`What is ${playerInput}? You can't do that! That's cheating!`);
     return;
@@ -24,7 +24,8 @@ function playRound(playerInput) {
 
   // Use Math.floor to round down to the nearest whole number.
   // If we use Math.ceil, the array index could possibly be 3, which is out of bounds.
-  const computerChoice = Object.keys(choices)[Math.floor(Math.random() * choiceCount)];
+  const computerChoice =
+    Object.keys(choices)[Math.floor(Math.random() * choiceCount)];
 
   if (playerChoice === computerChoice) {
     addGameLog(`You Tied! ${playerChoice} is ${computerChoice}!`);

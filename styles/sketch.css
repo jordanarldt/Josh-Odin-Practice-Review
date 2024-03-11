@@ -1,19 +1,19 @@
 .board {
-    margin: 0px;
-    padding: 0px;
-    max-width: 1000px;
+  margin: 0px;
+  padding: 0px;
+  max-width: 1000px;
 }
 
 .row {
-    min-width: 0;
-    display: flex;
+  min-width: 0;
+  display: flex;
 }
 
 .square {
-    aspect-ratio: 1/1;
-    flex: 1 1 auto;
-    margin: 0px;
-    padding: 0px;
-    border-style: solid;
-    border-width: 1px;
+  aspect-ratio: 1/1;
+  flex: 1 1 auto;
+  margin: 0px;
+  padding: 0px;
+  border-style: solid;
+  border-width: 1px;
 }

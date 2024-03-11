@@ -85,11 +85,11 @@ function playRound(player1Choice, player2Choice) {
 // DOM Manipulation
 
 function endGame() {
-  playerScore.innerHTML = 0
-  computerScore.innerHTML = 0
-  goalScore.innerHTML = 0
-  while(gameOutPut.firstChild) {
-    gameOutPut.removeChild(gameOutPut.firstChild)
+  playerScore.innerHTML = 0;
+  computerScore.innerHTML = 0;
+  goalScore.innerHTML = 0;
+  while (gameOutPut.firstChild) {
+    gameOutPut.removeChild(gameOutPut.firstChild);
   }
   //const pageButtons = document.querySelectorAll("button");
   pageButtons.forEach((button) => {
@@ -102,7 +102,7 @@ function endGame() {
 }
 
 function startGame(numberRounds) {
-  endGame()
+  endGame();
   //let goalScore = document.querySelector("#goalScore");
   if (numberRounds != undefined) {
     goalScore.innerHTML = numberRounds;
@@ -132,17 +132,20 @@ function writeGameOut(gameInfo) {
 
 function logResultsToDOM(resultArray) {
   if (resultArray.result == 1) {
-    computerScore.innerHTML = Number(computerScore.innerHTML) + 1
-  } else if (resultArray.result == 0){
-    playerScore.innerHTML = Number(playerScore.innerHTML) + 1
+    computerScore.innerHTML = Number(computerScore.innerHTML) + 1;
+  } else if (resultArray.result == 0) {
+    playerScore.innerHTML = Number(playerScore.innerHTML) + 1;
   }
-  writeGameOut(resultArray)
-  if((Number(computerScore.innerHTML) == Number(goalScore.innerHTML)) || (Number(playerScore.innerHTML) == Number(goalScore.innerHTML))) {
-    endGame()
-    writeGameOut(
-      {result: resultArray.result,
-      message: (resultArray.result ? "Computer Wins!" : "Player Wins!")}
-    )
+  writeGameOut(resultArray);
+  if (
+    Number(computerScore.innerHTML) == Number(goalScore.innerHTML) ||
+    Number(playerScore.innerHTML) == Number(goalScore.innerHTML)
+  ) {
+    endGame();
+    writeGameOut({
+      result: resultArray.result,
+      message: resultArray.result ? "Computer Wins!" : "Player Wins!",
+    });
   }
 }
 
@@ -150,4 +153,8 @@ function logResultsToDOM(resultArray) {
 
 submitNumberRounds.addEventListener("click", () => startGame());
 submitUnlimitedRounds.addEventListener("click", () => startGame(Infinity));
-playerChoices.forEach(button => button.addEventListener("click", () => logResultsToDOM(playRound(button.id, getComputerChoice()))));
+playerChoices.forEach((button) =>
+  button.addEventListener("click", () =>
+    logResultsToDOM(playRound(button.id, getComputerChoice()))
+  )
+);
