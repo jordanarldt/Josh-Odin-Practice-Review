@@ -1,4 +1,11 @@
+.board {
+    margin: 0px;
+    padding: 0px;
+    max-width: 1000px;
+}
+
 .row {
+    min-width: 0;
     display: flex;
 }
 
@@ -7,7 +14,6 @@
     flex: 1 1 auto;
     margin: 0px;
     padding: 0px;
-    height: 50px;
     border-style: solid;
     border-width: 1px;
     border-color: darkgreen;
