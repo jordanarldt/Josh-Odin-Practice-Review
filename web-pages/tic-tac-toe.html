@@ -4,37 +4,37 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../styles/ttt.css">
-    <script src="../scripts/tic-tac-toe.js" defer></script>
+    <script src="../scripts/ttt.js" defer></script>
     <title>Rock Paper Scissors</title>
   </head>
   <body>
-    <h1>Welcome to Tic Tac Toe!</h1>
-    <h2>Scores!</h2>
+    <h1 style="text-align: center">Welcome to Tic Tac Toe!</h1>
+    <h2 style="text-align: center">Scores!</h2>
     <div style="display: flex">
-      <div style="flex: 1">
+      <div style="flex: 1;text-align: right;margin: 10px">
         <h4>Player</h4>
         <div id="playerScore">0</div>
       </div>
-      <div style="flex: 1">
+      <div style="flex: 1;margin: 10px">
         <h4>Computer</h4>
         <div id="computerScore">0</div>
       </div>
     </div>
     <div class="board">
         <div class="row">
-            <div class="square" id="0"></div>
-            <div class="square" id="1"></div>
-            <div class="square" id="2"></div>
+            <div class="square" id="cell-0"></div>
+            <div class="square" id="cell-1"></div>
+            <div class="square" id="cell-2"></div>
         </div>
         <div class="row">
-            <div class="square" id="3"></div>
-            <div class="square" id="4"></div>
-            <div class="square" id="5"></div>
+            <div class="square" id="cell-3"></div>
+            <div class="square" id="cell-4"></div>
+            <div class="square" id="cell-5"></div>
         </div>
         <div class="row">
-            <div class="square" id="6"></div>
-            <div class="square" id="7"></div>
-            <div class="square" id="8"></div>
+            <div class="square" id="cell-6"></div>
+            <div class="square" id="cell-7"></div>
+            <div class="square" id="cell-8"></div>
         </div>
     </div>
   </body>
