@@ -10,6 +10,22 @@
   display: flex;
 }
 
+.row.top .square {
+  border-top-width: 0px;
+}
+
+.row.bottom .square {
+  border-bottom-width: 0px;
+}
+
+.square.column-left {
+  border-left-width: 0px;
+}
+
+.square.column-right {
+  border-right-width: 0px;
+}
+
 .square {
   display: flex;
   flex-direction: column;
